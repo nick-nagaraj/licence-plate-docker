@@ -40,6 +40,4 @@ COPY required_files /tensorflow/models/research/object_detection/required_files
 
 WORKDIR /tensorflow/models/research
 
-EXPOSE 5555
-
 CMD ["python3", "/tensorflow/models/research/object_detection/required_files/app/server.py", "serve"]

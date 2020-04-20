@@ -156,6 +156,6 @@ async def analyze(request):
     return JSONResponse({'result': str(prediction)})
 
 
-if __name__ == '__main__':
-    if 'serve' in sys.argv:
-        uvicorn.run(app=app, host='0.0.0.0', port=5555, log_level="info")
+if __name__ == '_main__':
+    port1 = int(process.env.PORT)
+    uvicorn.run(app, host='0.0.0.0', port=port1)
