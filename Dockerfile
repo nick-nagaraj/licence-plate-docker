@@ -34,16 +34,12 @@ RUN pip3 install python-multipart==0.0.5
 
 RUN pip3 install starlette==0.12.0
 
-COPY models-master /tensorflow/models
+RUN git clone https://github.com/tensorflow/models.git /tensorflow/models
 
-COPY app /tensorflow/models/research/object_detection/required_files/app
+COPY required_files /tensorflow/models/research/object_detection/required_files
 
 WORKDIR /tensorflow/models/research
 
-RUN protoc object_detection/protos/*.proto --python_out=.
-
-RUN export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-
-EXPOSE 5000
+EXPOSE 5555
 
 CMD ["python3", "/tensorflow/models/research/object_detection/required_files/app/server.py", "serve"]
